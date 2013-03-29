@@ -1,0 +1,8 @@
+NumRolls=100
+Dice=Die1
+LoadedSide=3
+LoadedAmount=2
+Dice=Die2
+LoadedSide=6
+LoadedAmount=10
+
