@@ -11,9 +11,21 @@
 
 using namespace std;
 
+/**
+ *  Default Constructor
+ */
+Die::Die() :
+           current_value_(1),
+           prob_lookup(0)
+{
+    loaded_side_ = 0;
+    loaded_amount_ = 0;
+    
+    srand(time(NULL));
+}
 
 /**
- *  Constructor
+ *  Two Argument Constructor
  */
 Die::Die(int loaded_side, int loaded_amount):
          current_value_(1),
@@ -24,8 +36,6 @@ Die::Die(int loaded_side, int loaded_amount):
  
    //make sure to get a different seed every time
    srand (time(NULL));
-
-   std::cout << prob_lookup.size() << "\n";
 }
 
 /**
@@ -47,6 +57,7 @@ void Die::initialize()
    }
 }
 
+
 /**
  * This function sets the current_value to a random
  * lookup in the probability table.
@@ -58,9 +69,23 @@ void Die::roll()
   current_value_ = prob_lookup[myRand];
 }
 
+
+
+
 int Die::getValue()
 {
    return current_value_;
+}
+
+/**
+ * This function sets the values for the loaded
+ * side and loaded amount.
+ */
+void Die::setLoading(int loaded_side, int loaded_amount)
+{
+    loaded_side_ = loaded_side;
+    loaded_amount_ = loaded_amount;
+    this->initialize();
 }
 
 Die::~Die()

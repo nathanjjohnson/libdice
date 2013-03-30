@@ -17,6 +17,7 @@ public:
    Die(int loaded_side, int loaded_amount);
    void initialize();
    void roll();
+   void setLoading(int loaded_side, int loaded_amount);
    int getValue();
    virtual ~Die();
    
