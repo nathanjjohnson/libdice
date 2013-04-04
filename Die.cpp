@@ -1,7 +1,10 @@
-/**
- *  Nathan Johnson 
- *  SpectraLogic Interview 3/26/2013
- */
+//
+//  Die.cpp
+//  DiceRoller
+//
+//  Created by Nathan Johnson on 3/28/13.
+//  Copyright (c) 2013 chilledwort software All rights reserved.
+//
 
 #include "Die.h"
 #include <cstdlib>
@@ -12,51 +15,34 @@
 using namespace std;
 
 /**
- *  Default Constructor
+ *  Default constructor 
+ *  Builds a 6-sided die
  */
 Die::Die() :
-           current_value_(1),
-           prob_lookup(0)
+sides_(6)
 {
-    loaded_side_ = 0;
-    loaded_amount_ = 0;
-    
+    current_value_ = 1;
     srand(time(NULL));
 }
 
 /**
- *  Two Argument Constructor
+ *  Overloade Constructor
+ *  Builds an n-sided die
  */
-Die::Die(int loaded_side, int loaded_amount):
-         current_value_(1),
-         prob_lookup(0)
+Die::Die(int n) :
+           sides_(n)
 {
-   loaded_side_ = loaded_side;
-   loaded_amount_ = loaded_amount;
- 
-   //make sure to get a different seed every time
-   srand (time(NULL));
+    current_value_ = 1;
+    srand(time(NULL));
 }
 
-/**
- *  This function builds a vector that holds
- *  all the possible outcomes with proper weighting
- *  for each.
- */
-void Die::initialize()
+Die::Die(int n, std::string name) :
+                             sides_(n),
+                             name_(name)
 {
-   for(int i = 1; i <= 6; i++) {
-      if(i == loaded_side_ && loaded_amount_ > 0) {
-         for(int j = 0; j < loaded_amount_; j++) {
-            prob_lookup.push_back(i);
-         }
-      }
-      else {
-         prob_lookup.push_back(i);
-      } 
-   }
+    current_value_ = 1;
+    srand(time(NULL));
 }
-
 
 /**
  * This function sets the current_value to a random
@@ -65,29 +51,29 @@ void Die::initialize()
 void Die::roll() 
 {
   //generate random number in lookup range 
-  int myRand = rand() % prob_lookup.size();
-  current_value_ = prob_lookup[myRand];
+  current_value_ = rand() % sides_ + 1;
 }
 
-
-
-
-int Die::getValue()
+/**
+ * Return the current value of the die.
+ */
+int Die::get_value()
 {
    return current_value_;
 }
 
-/**
- * This function sets the values for the loaded
- * side and loaded amount.
- */
-void Die::setLoading(int loaded_side, int loaded_amount)
+const int Die::get_sides()
 {
-    loaded_side_ = loaded_side;
-    loaded_amount_ = loaded_amount;
-    this->initialize();
+    return sides_;    
 }
 
+string Die::get_name()
+{
+    return name_;
+}
+/**
+ * Destructor
+ */
 Die::~Die()
 {}
 

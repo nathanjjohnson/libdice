@@ -3,11 +3,11 @@
 //  DiceRoller
 //
 //  Created by Nathan Johnson on 3/28/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 chilledwort software All rights reserved.
 //
 
-#ifndef DiceRoller_Dice_h
-#define DiceRoller_Dice_h
+#ifndef DICE_H
+#define DICE_H
 
 #include "Die.h"
 
@@ -15,12 +15,9 @@ class Dice {
     
 public:
    Dice();
-   Dice(int,int, int, int);
+   Dice(Die*, Die*);
    virtual ~Dice();
 
-   //call initialize the members
-   void initialize();
-    
    //roll the dice and return a pair of values
    std::pair<int,int> roll();
     

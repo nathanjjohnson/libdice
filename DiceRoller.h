@@ -17,14 +17,14 @@ class DiceRoller {
     
 public:
    //function declarations
-   int read_file(std::string file_name);
+   Dice* read_file(std::string file_name);
    int run();
    void printRollup();
 
 private:
    //variable declarations
    int numRolls;
-    std::vector<std::pair<int,int> > diceHistory;
+   std::vector<std::pair<int,int> > diceHistory;
     
    Dice *dice1;
 };

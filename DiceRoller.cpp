@@ -3,7 +3,7 @@
 //  DiceRoller
 //
 //  Created by Nathan Johnson on 3/28/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 chilledwort software All rights reserved.
 //
 
 #include <fstream>
@@ -15,8 +15,8 @@ using namespace std;
 
 int DiceRoller::run()
 {
-    read_file("/Users/nate/Development/c++/Dice/pFile.txt");
-    dice1->initialize();
+    dice1 = read_file("/Users/nate/Development/c++/Dice/pFile.txt");
+    //dice1->initialize();
     
     //Loop over numRolls and perform the calculations
     //store and print the results for each roll
@@ -32,8 +32,9 @@ int DiceRoller::run()
 /**
  *  Function to parse the input file and store the key/value
  */
-int DiceRoller::read_file(string file_name)
+Dice* DiceRoller::read_file(string file_name)
 {
+    Dice *dice_set;
     vector<string> list;
     ifstream in_stream;
     string line;
@@ -81,13 +82,10 @@ int DiceRoller::read_file(string file_name)
             loadedAmount2 = atoi(value.c_str());
         }
         else if(key == "LoadedAmount" && counter == 2) {
-            dice1 = new Dice(loadedSide,
-                             loadedAmount,
-                             loadedSide2,
-                             loadedAmount2);
+            dice_set = new Dice();
         }
     }
-    return 0;
+    return dice_set;
 }
 
 void DiceRoller::printRollup()

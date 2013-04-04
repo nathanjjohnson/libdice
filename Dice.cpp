@@ -3,7 +3,7 @@
 //  DiceRoller
 //
 //  Created by Nathan Johnson on 3/28/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 chilledwort software All rights reserved.
 //
 
 #include <iostream>
@@ -12,20 +12,14 @@
 
 Dice::Dice() 
 {
-    die1 = new Die(0,0);
-    die2 = new Die(0,0);
+    die1 = new Die();
+    die2 = new Die();
 } 
 
-Dice::Dice(int a, int b, int c, int d)
+Dice::Dice(Die* d1, Die* d2)
 {
-    die1 = new Die(a, b);
-    die2 = new Die(c, d);
-}
-
-void Dice::initialize()
-{
-    die1->initialize();
-    die2->initialize();
+    die1 = d1;
+    die2 = d2;
 }
 
 std::pair<int,int> Dice::roll()
@@ -33,13 +27,13 @@ std::pair<int,int> Dice::roll()
     die1->roll();
     die2->roll();
     
-    return std::make_pair(die1->getValue(), die2->getValue());
+    return std::make_pair(die1->get_value(), die2->get_value());
 }
 
 void Dice::printResults()
 {
-    std::cout << ": Die1 rolled a " << die1->getValue() 
-              << ", Die2 rolled a " << die2->getValue() << "\n";
+    std::cout << ": Die1 rolled a " << die1->get_value() 
+              << ", Die2 rolled a " << die2->get_value() << "\n";
 }
 
 Dice::~Dice() 
