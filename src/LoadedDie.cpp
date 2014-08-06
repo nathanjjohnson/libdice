@@ -3,11 +3,11 @@
 //  DiceRoller
 //
 //  Created by Nathan Johnson on 3/28/13.
-//  Copyright (c) 2013 chilledwort software All rights reserved.
 //
 
 #include <iostream>
 #include <time.h>
+#include <cstdlib>
 #include "LoadedDie.h"
 
 /**

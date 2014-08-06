@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <iterator>
+#include <cstdlib>
 #include "DieRoller.h"
 #include "LoadedDie.h"
 

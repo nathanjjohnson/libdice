@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <cstdlib>
 #include "DiceRoller.h"
 
 using namespace std;
